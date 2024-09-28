@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Revolution Feedback Form</title>
+    <style>
+        :root {
+            --primary-color: #5e3c90;
+            --bg-color: #f6f4f9;
+            --text-color: #333;
+            --input-bg: #fff;
+            --shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+        .form-section {
+            background-color: var(--input-bg);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus, textarea:focus, select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(94, 60, 144, 0.2);
+        }
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #4c3175;
+        }
+        #thankYouMessage {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            .form-section {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The AI Revolution Feedback Form</h1>
+    </header>
+    
+    <div class="container">
+        <form id="feedbackForm">
+            <div class="form-section">
+                <label for="q1">Which part of Day 1 did you like the most?</label>
+                <input type="text" id="q1" name="q1" list="q1Options" required>
+                <datalist id="q1Options">
+                    <option value="Understanding what AI is">
+                    <option value="Realising how fast technology is progressing">
+                    <option value="Real case applications of AI">
+                    <option value="Visualisation tools">
+                    <option value="Steps into building an AI algorithm">
+                </datalist>
+            </div>
+            
+            <div class="form-section">
+                <label for="q2">What are the applications you see your company benefiting most from AI?</label>
+                <textarea id="q2" name="q2" required></textarea>
+            </div>
+            
+            <div class="form-section">
+                <label for="q3">What do you look forward to from today's training?</label>
+                <textarea id="q3" name="q3" required></textarea>
+            </div>
+            
+            <button type="submit">Submit Feedback</button>
+        </form>
+        
+        <div id="thankYouMessage">
+            Thank you for your feedback! Your input has been submitted successfully.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            var formData = new FormData(this);
+            var body = '';
+            var questions = {
+                q1: "Which part of Day 1 did you like the most?",
+                q2: "What are the applications you see your company benefiting most from AI?",
+                q3: "What do you look forward to from today's training?"
+            };
+            
+            for (var [key, value] of formData.entries()) {
+                body += `Question: ${questions[key]}\nAnswer: ${value}\n\n`;
+            }
+            
+            var mailtoLink = 'mailto:monica.odysseos@cy.gt.com'
+                + '?subject=' + encodeURIComponent('The AI Revolution Feedback')
+                + '&body=' + encodeURIComponent(body);
+            
+            window.location.href = mailtoLink;
+            
+            document.getElementById('feedbackForm').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
