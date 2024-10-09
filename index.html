@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Training - Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #5e3c90;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: flex-start;
+            gap: 20px;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #5e3c90;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #4a2e73;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Training - Feedback Form</h1>
+        <form id="feedbackForm">
+            <label for="rating">How would you rate this training so far? (1 to 5)</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required>
+
+            <label for="favourite">Which was your favourite part?</label>
+            <textarea id="favourite" name="favourite" rows="4" required></textarea>
+
+            <label>Do you see any applications in your day to day operations?</label>
+            <div class="radio-group">
+                <label>
+                    <input type="radio" name="applications" value="Yes" required> Yes
+                </label>
+                <label>
+                    <input type="radio" name="applications" value="No"> No
+                </label>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            var rating = document.getElementById('rating').value;
+            var favourite = document.getElementById('favourite').value;
+            var applications = document.querySelector('input[name="applications"]:checked').value;
+            
+            var subject = encodeURIComponent("Feedback from AI training to PHC");
+            var body = encodeURIComponent(
+                "Rating: " + rating + "\n\n" +
+                "Favourite part: " + favourite + "\n\n" +
+                "Applications in day to day operations: " + applications
+            );
+            
+            window.location.href = "mailto:monica.odysseos@cy.gt.com?subject=" + subject + "&body=" + body;
+        });
+    </script>
+</body>
+</html>
