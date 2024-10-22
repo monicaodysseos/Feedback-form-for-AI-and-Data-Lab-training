@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Revolution Feedback Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #5e3c90;
+        }
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            transition: opacity 0.2s;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+        .text-primary {
+            color: var(--primary-color);
+        }
+        .border-primary {
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        <!-- Header -->
+        <header class="mb-8">
+            <h1 class="text-3xl font-bold text-primary">The AI Revolution Feedback Form</h1>
+        </header>
+
+        <!-- Form -->
+        <form id="feedbackForm" class="space-y-6" action="mailto:monica.odysseos@cy.gt.com" method="POST" enctype="text/plain">
+            <!-- Section 1 -->
+            <div class="bg-white rounded-lg shadow-md p-6 space-y-4">
+                <div class="space-y-2">
+                    <label for="favorite-part" class="block text-lg font-medium text-gray-700">
+                        Which part of Day 1 did you like the most?
+                    </label>
+                    <input list="day1-options" id="favorite-part" name="favorite-part" 
+                           class="w-full p-3 border border-gray-300 rounded-md focus:border-primary focus:ring-1 focus:ring-primary"
+                           required>
+                    <datalist id="day1-options">
+                        <option value="Understanding what AI is">
+                        <option value="Realising how fast technology is progressing">
+                        <option value="Real case applications of AI">
+                        <option value="Visualisation tools">
+                        <option value="Steps into building an AI algorithm">
+                    </datalist>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="bg-white rounded-lg shadow-md p-6 space-y-4">
+                <div class="space-y-2">
+                    <label for="benefits" class="block text-lg font-medium text-gray-700">
+                        What are the applications you see your company benefiting most from AI?
+                    </label>
+                    <textarea id="benefits" name="benefits" rows="4"
+                            class="w-full p-3 border border-gray-300 rounded-md focus:border-primary focus:ring-1 focus:ring-primary"
+                            required></textarea>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="bg-white rounded-lg shadow-md p-6 space-y-4">
+                <div class="space-y-2">
+                    <label for="expectations" class="block text-lg font-medium text-gray-700">
+                        What do you look forward to from today's training?
+                    </label>
+                    <textarea id="expectations" name="expectations" rows="4"
+                            class="w-full p-3 border border-gray-300 rounded-md focus:border-primary focus:ring-1 focus:ring-primary"
+                            required></textarea>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-primary w-full py-3 px-6 rounded-md text-lg font-medium">
+                Submit Feedback
+            </button>
+        </form>
+
+        <!-- Thank You Message (Hidden by default) -->
+        <div id="thankYouMessage" class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-md">
+            Thank you for your feedback! Your response has been submitted successfully.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            // Show thank you message
+            document.getElementById('thankYouMessage').classList.remove('hidden');
+            
+            // Optional: Scroll to thank you message
+            document.getElementById('thankYouMessage').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
